@@ -1,0 +1,55 @@
+Logdir : logs\FFN_2
+## Command 
+C:\Users\nlewy\Desktop\pytorch_lab\src\torchtmpl\main.py config.yaml train
+
+ Config : {'data': {'root_dir': './data/', 'batch_size': 128, 'num_workers': 4, 'valid_ratio': 0.2}, 'nepochs': 20, 'logging': {'logdir': './logs'}, 'model': {'class': 'FFN'}} 
+
+## Summary of the model architecture
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+Sequential                               [10, 101]                 --
+├─Flatten: 1-1                           [10, 49152]               --
+├─Linear: 1-2                            [10, 32]                  1,572,896
+├─ReLU: 1-3                              [10, 32]                  --
+├─Dropout: 1-4                           [10, 32]                  --
+├─Linear: 1-5                            [10, 32]                  1,056
+├─ReLU: 1-6                              [10, 32]                  --
+├─Dropout: 1-7                           [10, 32]                  --
+├─Linear: 1-8                            [10, 32]                  1,056
+├─ReLU: 1-9                              [10, 32]                  --
+├─Dropout: 1-10                          [10, 32]                  --
+├─Linear: 1-11                           [10, 101]                 3,333
+==========================================================================================
+Total params: 1,578,341
+Trainable params: 1,578,341
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 15.78
+==========================================================================================
+Input size (MB): 1.97
+Forward/backward pass size (MB): 0.02
+Params size (MB): 6.31
+Estimated Total Size (MB): 8.30
+==========================================================================================
+
+## Loss
+
+CrossEntropyLoss()
+
+## Datasets : 
+Train : WrappedDataset(dataset=<torch.utils.data.dataset.Subset object at 0x000001DAB1DBF620>, transform=Compose(
+      ToImage()
+      GrayToRGB()
+      Resize(size=[128], interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomCrop(size=(128, 128), pad_if_needed=False, fill=0, padding_mode=constant)
+      ToDtype(scale=True)
+      Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], inplace=False)
+))
+Validation : WrappedDataset(dataset=<torch.utils.data.dataset.Subset object at 0x000001DAACA57250>, transform=Compose(
+      ToImage()
+      GrayToRGB()
+      Resize(size=[128], interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomCrop(size=(128, 128), pad_if_needed=False, fill=0, padding_mode=constant)
+      ToDtype(scale=True)
+      Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], inplace=False)
+))

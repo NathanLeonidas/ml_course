@@ -1,0 +1,46 @@
+Logdir : logs\Linear_1
+## Command 
+C:\Users\nlewy\Desktop\pytorch_lab\src\torchtmpl\main.py config.yaml train
+
+ Config : {'data': {'root_dir': './data/', 'batch_size': 128, 'num_workers': 4, 'valid_ratio': 0.2}, 'nepochs': 40, 'logging': {'logdir': './logs'}, 'model': {'class': 'Linear'}} 
+
+## Summary of the model architecture
+==========================================================================================
+Layer (type:depth-idx)                   Output Shape              Param #
+==========================================================================================
+Sequential                               [10, 101]                 --
+├─Flatten: 1-1                           [10, 49152]               --
+├─Linear: 1-2                            [10, 101]                 4,964,453
+==========================================================================================
+Total params: 4,964,453
+Trainable params: 4,964,453
+Non-trainable params: 0
+Total mult-adds (Units.MEGABYTES): 49.64
+==========================================================================================
+Input size (MB): 1.97
+Forward/backward pass size (MB): 0.01
+Params size (MB): 19.86
+Estimated Total Size (MB): 21.83
+==========================================================================================
+
+## Loss
+
+CrossEntropyLoss()
+
+## Datasets : 
+Train : WrappedDataset(dataset=<torch.utils.data.dataset.Subset object at 0x00000211E13BF620>, transform=Compose(
+      ToImage()
+      GrayToRGB()
+      Resize(size=[128], interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomCrop(size=(128, 128), pad_if_needed=False, fill=0, padding_mode=constant)
+      ToDtype(scale=True)
+      Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], inplace=False)
+))
+Validation : WrappedDataset(dataset=<torch.utils.data.dataset.Subset object at 0x00000211DC247250>, transform=Compose(
+      ToImage()
+      GrayToRGB()
+      Resize(size=[128], interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomCrop(size=(128, 128), pad_if_needed=False, fill=0, padding_mode=constant)
+      ToDtype(scale=True)
+      Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225], inplace=False)
+))
